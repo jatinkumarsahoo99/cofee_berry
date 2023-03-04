@@ -26,7 +26,6 @@ public class CustomerController {
 	@GetMapping("/test")
 	public String checkProject() {
 		return "Jatin Kumar Sahoo";
-		
 	}
 	
 	@PostMapping("/register")

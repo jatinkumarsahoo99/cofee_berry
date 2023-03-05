@@ -6,38 +6,45 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.CustomerDetails;
 import com.example.demo.entity.CustomerModel;
+import com.example.demo.entity.UserNewModel;
+import com.example.demo.entity.UserNewModel1;
 import com.example.demo.exception.ItemExistsException;
 import com.example.demo.repository.CustomerRepository;
 
-
 @Service
 public class CustomerServiceImpl implements CustomerService {
-	
-	
-	@Autowired
+
+	@Autowired(required = true)
 	private CustomerRepository customerRepository;
+	
+	/*
+	 * @Autowired(required = true) private CustomerCurdRepository customecurdRepo;
+	 */
 	
 	
 
 	@Override
-	public CustomerDetails createUser(CustomerModel user) {
-		if (customerRepository.existsByEmail(user.getCustomerEmail())) {
-			throw new ItemExistsException("User is already register with email:"+user.getCustomerEmail());
+	public UserNewModel createUser(UserNewModel1 user) {
+		if (customerRepository.existsByEmail(user.getUser_email())) {
+			throw new ItemExistsException("User is already register with email:"+user.getEmail());
 		}
-		CustomerDetails newUser = new CustomerDetails();
+		UserNewModel newUser = new UserNewModel();
 		BeanUtils.copyProperties(user, newUser);
-		newUser.setPassword((newUser.getPassword()));
+		newUser.setUser_password(user.getUser_password());
+
 		return customerRepository.save(newUser);
+		
+		
 	}
 
 	@Override
-	public CustomerDetails readUser() {
+	public UserNewModel readUser() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CustomerDetails updateUser(CustomerModel user) {
+	public UserNewModel updateUser(UserNewModel1 user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -48,10 +55,10 @@ public class CustomerServiceImpl implements CustomerService {
 		
 	}
 
-	@Override
-	public CustomerDetails getLoggedInUser() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	/*
+	 * @Override public UserNewModel getLoggedInUser() { // TODO Auto-generated
+	 * method stub return null; }
+	 */
+	
 
 }

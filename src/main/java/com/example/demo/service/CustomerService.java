@@ -1,18 +1,21 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.CustomerDetails;
 import com.example.demo.entity.CustomerModel;
+import com.example.demo.entity.UserNewModel;
+import com.example.demo.entity.UserNewModel1;
 
 public interface CustomerService {
 	
-	CustomerDetails createUser(CustomerModel user);
+	UserNewModel createUser(UserNewModel1 user);
 	
-	CustomerDetails readUser();
+	UserNewModel readUser();
 	
-	CustomerDetails updateUser(CustomerModel user);
+	UserNewModel updateUser(UserNewModel1 user);
 	
 	void deleteUser();
 	
-	CustomerDetails getLoggedInUser();
+	/* UserNewModel getLoggedInUser(); */
+	
+	/* Integer fetchCustomerCount(); */
 
 }
